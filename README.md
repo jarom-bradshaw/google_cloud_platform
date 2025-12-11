@@ -80,28 +80,16 @@ The developer workflow in Cloud Run can be done using VS Code:
 
 With Cloud Run, you can use two types of workflow: container-based workflow or a source-based workflow.[^1] We will be using the __container-based__ workflow.
 
-#### What is Google Cloud CLI
+#### Deploying from the Web Terminal with a Github Repo
 
-The Google Cloud CLI is Google Cloud’s command-line tool for interacting with Google Cloud resources from terminal. It lets us authenticate, configure projects, and run commands to create, update, and inspect services without using the web console. Please follow the install directions for [Windows](https://docs.cloud.google.com/sdk/docs/install-sdk#windows) or [Mac](https://docs.cloud.google.com/sdk/docs/install-sdk#mac).
+1. Push your Docker established repository to Github
+2. After logging into your account go to the [GCP Console](https://console.cloud.google.com/).
+3. Select `Cloud Run` from the hamburger menu on the top left (see [picture](cloudrun.png)).
+4. Now you can `Deploy a Web Service` using `Connect repository (Github)`
+5. Select your options and connect your repo.
+6. Let it build (this can take a few minutes)
 
-After installing the [SDK](https://docs.cloud.google.com/sdk/docs/install-sdk) we should be able to run the following command.
-
-```bash
-gcloud init
-```
-
-On a Mac, you may need to run `source ~/.zshrc` or restart your terminal.
-
-Now, we need to run to make sure we are connected correctly.
-
-```bash
-gcloud services enable run.googleapis.com
-```
-
-Now we have our local SDK installed and have access to our CLI into GCP.  Isn't that a mouthful of acronyms.
-
-#### Defining Environment Variables and 
-
+You can see this repository's app hosted on Cloud Run [here](https://google-cloud-platform-726715325864.us-west1.run.app/) (assuming I still have some free credits).
 
 ## Visual Studio Code Extensions
 
@@ -112,11 +100,8 @@ You can use [Managing Extensions in Visual Studio Code](https://code.visualstudi
 - [Dev Container](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 - [docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 
-
-
 ## Repository Files
 
-- The [slides.html](slides.html) is a Remark Slides presentation on Dashboarding.  You can read more at [remark_slides.md](remark_slides.md). The slides are embedded in the default Streamlit app for this repository.
 - [Dockerfile](Dockerfile) is the build script for our Docker Image
 - [docker-compose.yml](docker-compose.yml) provides an easy way to start our docker container.  [Docker Compose](https://docs.docker.com/compose/#:~:text=It%20is%20the%20key%20to,single%2C%20comprehensible%20YAML%20configuration%20file.) is _'the key to unlocking a streamlined and efficient development and deployment experience.'_
 - [requirements.txt](requirements.txt) is run from the [Dockerfile](Dockerfile) and installs the needed Python packages.
@@ -125,13 +110,14 @@ You can use [Managing Extensions in Visual Studio Code](https://code.visualstudi
 
 ## References
 
+_I build trainings a bit like AI. I steal a bunch of stuff from other websites.  This is the list of websites I used to train myself._
+
 - [Build a Streamlit App](https://docs.streamlit.io/get-started/tutorials/create-an-app)
 - [Google Cloud Get & Redeem Education Credits](https://docs.cloud.google.com/billing/docs/how-to/edu-grants)
 - [Google Cloud Redeem Credits](https://docs.cloud.google.com/billing/docs/how-to/edu-grants#redeem)
 - [Cloud Run](https://cloud.google.com/run?hl=en)
 - [Install the Google Cloud CLI](https://docs.cloud.google.com/sdk/docs/install-sdk)
-
-<a href="https://deploy.cloud.run"><img src="https://deploy.cloud.run/button.svg" alt="Run on Google Cloud" height="40"/></a>
-
-
-[^1] [Deploying a Streamlit App to Google Cloud Run](https://medium.com/@afouda.josue/deploying-a-streamlit-app-to-google-cloud-run-using-a-container-based-workflow-with-docker-and-fc9cb67a550a)
+- [Deploying Streamlit to GCP](https://medium.com/bitstrapped/step-by-step-guide-deploying-streamlit-apps-on-google-cloud-platform-gcp-96fca6a4f331)
+- [Ship docker to GCP](https://til.simonwillison.net/cloudrun/ship-dockerfile-to-cloud-run)
+- [Mapping custom domains](https://docs.cloud.google.com/run/docs/mapping-custom-domains)
+[Deploying a Streamlit App to Google Cloud Run](https://medium.com/@afouda.josue/deploying-a-streamlit-app-to-google-cloud-run-using-a-container-based-workflow-with-docker-and-fc9cb67a550a)
