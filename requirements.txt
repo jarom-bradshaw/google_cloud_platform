@@ -1,0 +1,7 @@
+altair
+polars
+pandas
+streamlit
+scikit-learn
+numpy
+plotly
