@@ -39,7 +39,7 @@ Please build dashboards that support a store owner in addressing the following q
   - How does the total number of items compare?
 4. Provide the owners of the stores with detailed records a comparison of customer demographics within a specified area around their store using the Census API. Your demographic comparison needs to have at least 10 unique variables.
 
-At a minimum, your application should include the following elements for each of the three key questions (if using NiceGUI, you must locate the corresponding functionality).
+At a minimum, your application should include the following elements for each of the four key questions (if using NiceGUI, you must locate the corresponding functionality).
 
 1. All data must leverage [Caching](https://docs.streamlit.io/develop/api-reference/caching-and-state).
 2. [Key Performance Indicators (KPIs)](https://docs.streamlit.io/develop/api-reference/data/st.metric) using `st.metric()` that address the question and provide context for comparisons.

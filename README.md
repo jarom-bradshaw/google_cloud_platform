@@ -111,6 +111,93 @@ With Cloud Run, you can use two types of workflow: container-based workflow or a
 
 You can see this repository's app hosted on Cloud Run [here](https://google-cloud-platform-726715325864.us-west1.run.app/) (assuming I still have some free credits).
 
+## CStore Dashboard Application
+
+### Overview
+
+This Streamlit dashboard analyzes convenience store transaction data for Rigby stores. The application provides four main analytical views:
+
+1. **Top Products** - Identifies the top 5 products by weekly sales (excluding fuels)
+2. **Beverage Brands** - Analyzes packaged beverage brands to identify which should be dropped
+3. **Payment Comparison** - Compares cash and credit customers across products, amounts, and item counts
+4. **Demographics** - Uses Census API to compare demographics around store locations
+
+### Running Locally
+
+1. **Prerequisites:**
+   - Docker Desktop installed and running
+   - Data files in the `data/` directory (Parquet files)
+
+2. **Start the application:**
+   ```bash
+   docker compose up
+   ```
+
+3. **Access the app:**
+   - Open your browser to `http://localhost:8501`
+
+### Data Requirements
+
+The application expects the following data files in the `data/` directory:
+- `cstore_stores.parquet` - Store information
+- `cstore_store_status.parquet` - Store status
+- `cstore_master_ctin.parquet` - Product master data
+- `cstore_transaction_sets.parquet` - Transaction basket data
+- `cstore_transaction_items/` - Individual transaction items (partitioned)
+- `cstore_transactions_daily_agg.parquet` - Daily aggregated data
+- `cstore_payments.parquet` - Payment data
+- `cstore_discounts.parquet` - Discount data
+- `cstore_shopper.parquet` - Shopper data
+
+**Note:** The application automatically filters data to Rigby stores only.
+
+### Census API Configuration
+
+For the Demographics page, you'll need a Census API key:
+
+1. Get a free API key from: https://api.census.gov/data/key_signup.html
+2. For local development: Enter the key in the Demographics page
+3. For Cloud Run deployment: Add the key to Streamlit secrets:
+   - In GCP Cloud Run, go to your service settings
+   - Add secret: `CENSUS_API_KEY` with your API key value
+
+### Features
+
+- **Data Caching:** All data operations use Streamlit's `@st.cache_data` for performance
+- **Data Validation:** Built-in data quality checks and validation
+- **Store Deduplication:** Handles stores with multiple owners/records
+- **Interactive Charts:** Plotly charts with user-defined thresholds and lines
+- **Great Tables:** Formatted summary tables using Great Tables
+- **Multi-page Navigation:** Easy navigation between different analyses
+- **Responsive Filters:** Date ranges, store selection, and category filters
+
+### Cloud Run Deployment
+
+1. Push your code to GitHub
+2. In GCP Console, go to Cloud Run
+3. Click "Deploy a Web Service" → "Connect repository (Github)"
+4. Select your repository and branch
+5. Configure:
+   - Service name
+   - Region
+   - Port: 8080 (already configured in Dockerfile)
+6. Add secrets if using Census API:
+   - Secret name: `CENSUS_API_KEY`
+   - Value: Your Census API key
+7. Deploy and wait for build to complete
+
+### Data Dictionary
+
+See [data/DATA_DICTIONARY.md](data/DATA_DICTIONARY.md) for complete schema documentation.
+
+### GitHub Repository
+
+[Add your GitHub repository link here]
+
+### Cloud Run URL
+
+[Add your Cloud Run deployment URL here after deployment]
+
 ## Visual Studio Code Extensions
 
 You can use [Managing Extensions in Visual Studio Code](https://code.visualstudio.com/docs/editor/extension-marketplace) to learn how to install extensions. [Managing Extensions in Visual Studio Code](https://code.visualstudio.com/docs/editor/extension-marketplace) provides more background on extensions if needed. We will use the following extensions;
@@ -126,7 +213,15 @@ You can use [Managing Extensions in Visual Studio Code](https://code.visualstudi
 - [docker-compose.yml](docker-compose.yml) provides an easy way to start our docker container.  [Docker Compose](https://docs.docker.com/compose/#:~:text=It%20is%20the%20key%20to,single%2C%20comprehensible%20YAML%20configuration%20file.) is _'the key to unlocking a streamlined and efficient development and deployment experience.'_
 - [requirements.txt](requirements.txt) is run from the [Dockerfile](Dockerfile) and installs the needed Python packages.
 - [README.md](README.md) is this file.  The `YAML` at the top is necessary for the Streamlit app to work correctly. Specifically the `app_port: 8501` is needed.  All other information can and should be manipulated.
-- [streamlit.py] is our Streamlit app.
+- [app.py](app.py) is our Streamlit app.
+- [utils/data_loader.py](utils/data_loader.py) contains data loading utilities with Rigby store filtering
+- [utils/data_validation.py](utils/data_validation.py) contains data quality validation functions
+- [pages/](pages/) contains the four dashboard pages:
+  - `1_Top_Products.py` - Top 5 products by weekly sales
+  - `2_Beverage_Brands.py` - Beverage brand analysis
+  - `3_Payment_Comparison.py` - Cash vs Credit comparison
+  - `4_Demographics.py` - Store demographics using Census API
+- [data/DATA_DICTIONARY.md](data/DATA_DICTIONARY.md) - Complete data dictionary for the CStore dataset
 
 ## References
 
