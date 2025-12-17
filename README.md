@@ -4,6 +4,26 @@ Introduction and Directions to get Connected to GCP as a student.  Then an examp
 
 This material uses [Polars](https://pola-rs.github.io/polars-book/user-guide/) and focuses [Streamlit](https://streamlit.io/) and dash boarding to introduce the data science app development process.
 
+## Challenge General Information
+
+You can read the details of the challenge at [challenge.md](challenge.md)
+
+### Key Items
+
+- __Due Date:__ 12/17/2025
+- __Work Rules:__ You cannot work with others.  You can ask any question you want in our general channel. The teacher and TA are the only ones who can answer questions. __You cannot use code from other students' apps.__
+- __Product:__ A streamlit app that runs within Docker, builds from your repo, and is published on Google Cloud Platform.
+- __Github Process:__ Each student will fork the challenge repository and create their app. Their GitHub repo will have a link to the Cloud Run URL.
+- __Canvas Process:__ Each student will upload a `.pdf` or `.html` file with their results as described in [challenge.md](challenge.md)
+- Review the [Google Cloud Platform (GCP)](https://github.com/byuibigdata/google_cloud_platform) guide for setup instructions.
+
+### Notes & References
+
+- [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+- [Creating a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+
+## I added content from other repo to be easier
+
 ## GCP Setup
 
 ### Sign Up
