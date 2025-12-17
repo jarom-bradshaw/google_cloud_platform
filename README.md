@@ -213,7 +213,7 @@ You can use [Managing Extensions in Visual Studio Code](https://code.visualstudi
 - [docker-compose.yml](docker-compose.yml) provides an easy way to start our docker container.  [Docker Compose](https://docs.docker.com/compose/#:~:text=It%20is%20the%20key%20to,single%2C%20comprehensible%20YAML%20configuration%20file.) is _'the key to unlocking a streamlined and efficient development and deployment experience.'_
 - [requirements.txt](requirements.txt) is run from the [Dockerfile](Dockerfile) and installs the needed Python packages.
 - [README.md](README.md) is this file.  The `YAML` at the top is necessary for the Streamlit app to work correctly. Specifically the `app_port: 8501` is needed.  All other information can and should be manipulated.
-- [app.py](app.py) is our Streamlit app.
+- [Home.py](Home.py) is our Streamlit app (main dashboard/homepage).
 - [utils/data_loader.py](utils/data_loader.py) contains data loading utilities with Rigby store filtering
 - [utils/data_validation.py](utils/data_validation.py) contains data quality validation functions
 - [pages/](pages/) contains the four dashboard pages:
